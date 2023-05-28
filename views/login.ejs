@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <h1>LOGIN PAGE</h1>
+    <form action="/login" method="post">
+        <!-- <label for="username">Username</label>
+        <input type="text" name="username" id="username"> -->
+        <label for="email">Email</label> <br>
+        <input type="text" name="email" id="email"> <br>
+        <label for="password">Password</label> <br>
+        <input type="password" name="password" id="password"> <br>
+        <button type="submit">Login</button> <br>
+       
+        <span>Don't have an account ? Register here</span> <br><a href="/signup">Signup</a>
+
+        <script>
+           let form= document.querySelector("form")
+
+           form.addEventListener("submit",(e)=>{
+            e.preventDefault()
+            let email=form.email.value
+            let password=form.password.value
+
+            console.log(email,password);
+           })
+        </script>
+    </form>
+</body>
+</html>

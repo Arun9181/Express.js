@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    <%- include("./partials/nav.ejs") %>
+    <h1>SIGNUP PAGE</h1>
+    <form action="/signup" method="post">
+        <!-- <label for="username">Username</label>
+        <input type="text" name="username" id="username"> -->
+        <label for="email">Email</label> <br>
+        <input type="text" name="email" id="email" > <br>
+        <label for="password">Password</label> <br>
+        <input type="password" name="password" id="password"> <br>
+        
+        <button type="submit">Signup</button> <br>
+        <span>Already have an account ? Login here</span> <br><a href="/login">Login</a>
+    </form>
+
+    <script>
+        let form= document.querySelector("form")
+
+        form.addEventListener("submit",async(e)=>{
+         e.preventDefault()
+         let email=form.email.value
+         let password=form.password.value
+         let body={email,password}
+
+         try {
+          let res= await fetch("/signup",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify(body)
+            })
+            let data=await res.json()
+            console.log(data);
+         } catch (error) {
+            console.log("error in posting");
+         }
+
+         console.log(email,password);
+        })
+     </script>
+</body>
+</html>
